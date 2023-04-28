@@ -5,7 +5,7 @@ clear = lambda: os.system('clear')
 
 if __name__ == "__main__":
     rnjesus= random.randint(1,5)
-    board = Sudoku(rnjesus)
+    board = Sudoku(1)
     board.generateBoard()
     
     board.getSolution()
@@ -17,6 +17,7 @@ if __name__ == "__main__":
         if board.checkIfWin():
             break
         if update == True:
+            clear()
             board.updateBoard()
             update = False
         print("Valid rows: 0-8")

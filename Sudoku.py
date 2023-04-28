@@ -13,6 +13,7 @@ class Sudoku:
         self.correct = 0
         self.score = 0
         self.missing = 81
+        self.streak = 0
 
     def generateBoard(self):
         open("boards.txt", "r")
@@ -178,18 +179,20 @@ class Sudoku:
     
     def incrementMistake(self):
         self.mistakes += 1
+        self.streak = 0
 
     def addValue(self,row,column,value):
         if self.board[row][column] == value:
             return
         self.board[row][column] = value
         self.correct += 1
+        self.streak += 1
         
         if self.correct == 0:
             self.score = 100
         elif self.correct > 0:
             if self.correct < 2:
-                self.score += 100
+                self.score += 50*self.streak
             else:
                 self.score *= 2
     
