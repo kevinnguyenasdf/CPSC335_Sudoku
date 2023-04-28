@@ -7,10 +7,14 @@ if __name__ == "__main__":
     rnjesus= random.randint(1,5)
     board = Sudoku(1)
     board.generateBoard()
+    
     board.getSolution()
     update = True
+
     while True:
         if board.getMistakes() == 3:
+            break
+        if board.checkIfWin():
             break
         if update == True:
             board.updateBoard()
@@ -39,7 +43,7 @@ if __name__ == "__main__":
         
         if value == board.getCorrectValue(row,column):
             board.addValue(row,column,value)
-
+        
         update = True
 
     board.displaySolution()

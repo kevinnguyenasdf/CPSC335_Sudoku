@@ -12,6 +12,7 @@ class Sudoku:
         self.mistakes = 0
         self.correct = 0
         self.score = 0
+        self.missing = 81
 
     def generateBoard(self):
         open("boards.txt", "r")
@@ -25,6 +26,8 @@ class Sudoku:
                     for number in line:
                         if number.isdigit():
                             self.board[r][c] = int(number)
+                            if int(number) > 0:
+                                self.missing -= 1
                             c+= 1
                 elif "Grid" in line and int(line[-2]) == self.boardVersion:
                     copying = True
@@ -190,6 +193,14 @@ class Sudoku:
             else:
                 self.score *= 2
     
+    def checkIfWin(self):
+        if self.missing == 0:
+            return True
+        return False
+    
+    def getMissing(self):
+        print(self.missing)
+
     def displayScore(self):
         print("You got %d correct" % self.correct)
         print("Score: %d" % self.score)
