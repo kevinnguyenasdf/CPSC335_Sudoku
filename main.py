@@ -10,11 +10,13 @@ if __name__ == "__main__":
     
     board.getSolution()
     update = True
+    win = False
 
     while True:
         if board.getMistakes() == 3:
             break
         if board.checkIfWin():
+            win = True
             break
         if update == True:
             clear()
@@ -48,5 +50,7 @@ if __name__ == "__main__":
         update = True
 
     board.displaySolution()
+    if win == True:
+        print("Congrats You Won!")
     board.displayScore()
 

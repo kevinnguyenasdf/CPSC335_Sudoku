@@ -39,7 +39,7 @@ class Sudoku:
                 if r == 9:
                     break
                 c = 0
-        
+
         self.cleanBoard = np.copy(self.board)
         
 
@@ -187,7 +187,7 @@ class Sudoku:
         self.board[row][column] = value
         self.correct += 1
         self.streak += 1
-        
+
         if self.correct == 0:
             self.score = 100
         elif self.correct > 0:
@@ -197,6 +197,7 @@ class Sudoku:
                 self.score *= 2
     
     def checkIfWin(self):
+        print(self.missing)
         if self.missing == 0:
             return True
         return False
