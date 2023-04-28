@@ -5,7 +5,7 @@ clear = lambda: os.system('clear')
 
 if __name__ == "__main__":
     rnjesus= random.randint(1,5)
-    board = Sudoku(1)
+    board = Sudoku(rnjesus)
     board.generateBoard()
     
     board.getSolution()
