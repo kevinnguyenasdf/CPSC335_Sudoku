@@ -1,3 +1,29 @@
+"""
+Group: Brogrammers
+Team Members: 
+Adam Harb:
+Julio Villegas:
+Antionio Gonzalez:
+Kevin Nguyen: lnguyen37@csu.fullerton.edu
+
+Program name: Sudoku
+Purpose: Contains the Sudoku class and Sudoku member functions.
+
+===============Member Functions=====================
+
+    generateBoard(self) -> None
+    checkValid(self) -> bool
+    getMistakes(self) -> int
+    updateBoard(self) -> None
+    displaySolution(self) -> None
+    getCorrectValue(self,row,column) -> int
+    incrementMistake(self) -> None
+    addValue(self,row,column,value) -> None
+    checkIfWin(self) -> bool
+    displayScore(self) -> None
+
+"""
+
 import os
 import numpy as np
 from collections import defaultdict, deque
@@ -15,7 +41,10 @@ class Sudoku:
         self.missing = 81
         self.streak = 0
 
-    def generateBoard(self):
+    def generateBoard(self) -> None:
+        """
+        Generates the game board.
+        """
         open("boards.txt", "r")
         copying = False
         r = 0
@@ -44,9 +73,10 @@ class Sudoku:
         
 
     #This solution I came up with myself.
-    def checkValid(self):
-        #check each row to see if it repeats
-        #check each column as well
+    def checkValid(self) -> bool:
+        """
+        Checks if the inputted board is a valid Sudoku board.
+        """
         for row in self.board:
             print(row)
         repeat = 0
@@ -87,10 +117,16 @@ class Sudoku:
                             return False
         return True
     
-    def getMistakes(self):
+    def getMistakes(self) -> int:
+        """
+        Getter to get the value of mistakes made.
+        """
         return self.mistakes
     
-    def updateBoard(self):
+    def updateBoard(self) -> None:
+        """
+        Updates the game board visually.
+        """
         count = 1
         print("******************* Mistakes: %d *********************" % self.getMistakes())
         print("_____________________________________________________")
@@ -112,7 +148,10 @@ class Sudoku:
                     count += 1
         print()
 
-    def displaySolution(self):
+    def displaySolution(self) -> None:
+        """
+        Updates the gameboard to display solution.
+        """
         clear()
         count = 1
         print("******************* Mistakes: %d *********************" % self.getMistakes())
@@ -138,7 +177,10 @@ class Sudoku:
 
 
     #This solution was taken from https://leetcode.com/problems/sudoku-solver/solutions/1417073/97-faster-clean-concise-well-explained/
-    def getSolution(self):
+    def getSolution(self) -> None:
+        """
+        Generates the solution to the current gameboard. Modifies the self.cleanBoard matrix.
+        """
         rows,cols,block,seen = defaultdict(set),defaultdict(set),defaultdict(set),deque([])
         for i in range(9):
             for j in range(9):
@@ -174,14 +216,23 @@ class Sudoku:
         
         dfs()
 
-    def getCorrectValue(self,row,column):
+    def getCorrectValue(self,row,column) -> int:
+        """
+        Returns the value that is supposed to be @ the specified row and column of the matrix.
+        """
         return self.cleanBoard[row][column]
     
-    def incrementMistake(self):
+    def incrementMistake(self) -> None:
+        """
+        Used to increment the mistake made and reset the streak the player has on multiple spots in a row.
+        """
         self.mistakes += 1
         self.streak = 0
 
-    def addValue(self,row,column,value):
+    def addValue(self,row,column,value) -> None:
+        """
+        Sets the value entered to the specified row and column.
+        """
         if self.board[row][column] == value:
             return
         self.board[row][column] = value
@@ -196,16 +247,20 @@ class Sudoku:
             else:
                 self.score *= 2
     
-    def checkIfWin(self):
+    def checkIfWin(self) -> bool:
+        """
+        Checks to see if the player has filled in all the slots.
+        """
         print(self.missing)
         if self.missing == 0:
             return True
         return False
     
-    def getMissing(self):
-        print(self.missing)
 
-    def displayScore(self):
+    def displayScore(self) -> None:
+        """
+        Displays the game's score
+        """
         print("You got %d correct" % self.correct)
         print("Score: %d" % self.score)
 

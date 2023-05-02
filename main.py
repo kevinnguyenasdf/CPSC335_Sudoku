@@ -1,3 +1,16 @@
+"""
+Group: Brogrammers
+Team Members: 
+Adam Harb:
+Julio Villegas:
+Antionio Gonzalez:
+Kevin Nguyen: lnguyen37@csu.fullerton.edu
+
+Program name: Sudoku
+Purpose: Contains the main function which uses the Sudoku class from Sudoku.py. 
+Allows user to play Sudoku via the terminal.
+"""
+
 from Sudoku import Sudoku
 import random
 import os
@@ -25,6 +38,9 @@ if __name__ == "__main__":
         print("Valid rows: 0-8")
         print("Valid columns: 0-8")
         val = input("Please enter a number, Format is: rc:# (example: 01:3 will assign a value of 3 to row 0 column 1): ")
+        if(not val[0].isdigit() or not val[1].isdigit() or not val[3].isdigit()):
+            print("Invalid please enter numbers in the correct format!")
+            continue
         if(len(val) < 4 or len(val) > 4):
             print("Invalid! Please enter the correct amount of characters.")
             continue
