@@ -1,8 +1,8 @@
 """
 Group: Brogrammers
 Team Members: 
-Adam Harb:
-Julio Villegas:
+Adam Harb: adamharb1999@csu.fullerton.edu
+Julio Villegas: julio_villegas@hotmail.com
 Antionio Gonzalez:
 Kevin Nguyen: lnguyen37@csu.fullerton.edu
 
